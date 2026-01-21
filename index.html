@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIFF Check-in</title>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 20px; }
+        button { padding: 15px 30px; margin: 10px; font-size: 18px; cursor: pointer; border-radius: 8px; border: none; color: white; }
+        .btn-in { background-color: #28a745; }
+        .btn-out { background-color: #dc3545; }
+    </style>
+</head>
+<body>
+    <h2>ระบบบันทึกเวลา</h2>
+    <div id="user">กำลังโหลดข้อมูล...</div>
+    <br>
+    <button class="btn-in" onclick="getLocation('Check-in')">Check-in</button>
+    <button class="btn-out" onclick="getLocation('Check-out')">Check-out</button>
+
+    <script>
+        const LIFF_ID = '2008881601-Dg4CmxGP'; // เอามาจาก LINE Developers
+        const GAS_URL = 'https://script.google.com/macros/s/AKfycbwinzDTrsvPwn8d5u8I8KBShyegqED5UNYA9ToMDgU0Cec45o7YUd2dr431izafqivQBw/exec'; // URL จากข้อ 1
+
+        async function main() {
+            await liff.init({ liffId: LIFF_ID });
+            if (liff.isLoggedIn()) {
+                const profile = await liff.getProfile();
+                document.getElementById('user').innerText = "สวัสดีคุณ " + profile.displayName;
+            } else {
+                liff.login();
+            }
+        }
+        main();
+
+        function getLocation(type) {
+            if (confirm('ยืนยันการ ' + type)) {
+                navigator.geolocation.getCurrentPosition((pos) => {
+                    const coords = pos.coords.latitude + "," + pos.coords.longitude;
+                    sendData(type, coords);
+                }, (err) => {
+                    alert('กรุณาอนุญาตการเข้าถึง GPS');
+                    sendData(type, "No Location");
+                });
+            }
+        }
+
+        async function sendData(type, location) {
+            const profile = await liff.getProfile();
+            fetch(GAS_URL, {
+                method: 'POST',
+                mode: 'no-cors', // สำคัญ: ใช้ no-cors สำหรับส่งไป GAS
+                body: JSON.stringify({
+                    userId: profile.userId,
+                    userName: profile.displayName,
+                    type: type,
+                    location: location
+                })
+            }).then(() => {
+                alert('บันทึก ' + type + ' สำเร็จ!');
+                liff.closeWindow();
+            }).catch(err => alert('เกิดข้อผิดพลาด: ' + err));
+        }
+    </script>
+</body>
+</html>
