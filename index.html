@@ -20,8 +20,8 @@
     <button class="btn-out" onclick="getLocation('Check-out')">Check-out</button>
 
     <script>
-        const LIFF_ID = '2008881601-Dg4CmxGP'; // เอามาจาก LINE Developers
-        const GAS_URL = 'https://script.google.com/macros/s/AKfycbxqPYNK9-F6YENkM80XD21QiMbf4NjVrJnr_yY6Q83ePCd-7FtngIFyUD32MX-P7j3WSg/exec'; // URL จากข้อ 1
+        const LIFF_ID = '2008881601-Dg4CmxGP';
+        const GAS_URL = 'https://script.google.com/macros/s/AKfycbxqPYNK9-F6YENkM80XD21QiMbf4NjVrJnr_yY6Q83ePCd-7FtngIFyUD32MX-P7j3WSg/exec';
 
         async function main() {
             await liff.init({ liffId: LIFF_ID });
@@ -50,10 +50,9 @@
             const profile = await liff.getProfile();
             fetch(GAS_URL, {
                 method: 'POST',
-                mode: 'no-cors', // สำคัญ: ใช้ no-cors สำหรับส่งไป GAS
+                mode: 'no-cors',
                 body: JSON.stringify({
                     userId: profile.userId,
-                    userName: profile.displayName,
                     type: type,
                     location: location
                 })
@@ -64,6 +63,6 @@
         }
     </script>
 </body>
-
 </html>
+
 
