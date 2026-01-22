@@ -67,7 +67,7 @@
 
         async function sendData(type, lat, lng) {
             const profile = await liff.getProfile();
-            const callbackName = 'reg_callback_' + Math.round(100000 * Math.random());
+            const callbackName = 'check_in_out_callback_' + Math.round(100000 * Math.random());
             
             window[callbackName] = function(data) {
                 delete window[callbackName];
@@ -95,6 +95,7 @@
     </script>
 </body>
 </html>
+
 
 
 
