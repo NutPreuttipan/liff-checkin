@@ -57,18 +57,19 @@
                     lat: lat,
                     lng: lng
                 })
-            }).then(response => {
-                if (response == 'Success') {
+            }).then(() => {
+                // if (response == 'Success') {
                     alert('บันทึก ' + type + ' สำเร็จ!');
                     liff.closeWindow();
-                } else {
-                    alert('บันทึกไม่สำเร็จ: ' + response)
-                }
+                // } else {
+                //     alert('บันทึกไม่สำเร็จ: ' + response)
+                // }
             }).catch(err => alert('เกิดข้อผิดพลาด: ' + err));
         }
     </script>
 </body>
 </html>
+
 
 
 
