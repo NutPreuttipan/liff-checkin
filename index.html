@@ -60,7 +60,8 @@
             if ((R * c * 1000) < 500) {
                 sendData(type, lat, lng);
             } else {
-                alert('อยู่นอกระยะที่กำหนด')
+                alert('อยู่นอกระยะที่กำหนด');
+                liff.closeWindow();
             }
         }
 
@@ -83,6 +84,7 @@
     </script>
 </body>
 </html>
+
 
 
 
