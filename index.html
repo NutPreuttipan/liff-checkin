@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Platform Squard Check-in5</title>
+    <title>Platform Squard Check-in6</title>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <style>
         body { font-family: sans-serif; text-align: center; padding: 20px; }
@@ -21,7 +21,7 @@
 
     <script>
         const LIFF_ID = '2008881601-Dg4CmxGP';
-        const GAS_URL = 'https://script.google.com/macros/s/AKfycbxQ8bF7iIPHEqP5MIr3_JG9YS3hw5onUeLp3xxcGsZsGKbNqPCW_k-PHomp_bl6rZrM/exec';
+        const GAS_URL = 'https://script.google.com/macros/s/AKfycbxgOZZ9oXa8xZxxURGYMlN74hI3gHPCYDpuldZChNSsA-UvO4HGQg7PCxc-jRBZ6VyTuw/exec';
 
         async function main() {
             await liff.init({ liffId: LIFF_ID });
@@ -56,7 +56,7 @@
                     Math.cos(lat * Math.PI / 180) * Math.cos(workLat * Math.PI / 180) *
                     Math.sin(dLon/2) * Math.sin(dLon/2);
             var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-            var distance = R * c * 1000 // คืนค่าเป็นเมตร
+            var distance = R * c * 1000 // ค่าเป็นเมตร
             if (distance < 500) {
                 sendData(type, lat, lng);
             } else {
@@ -95,6 +95,7 @@
     </script>
 </body>
 </html>
+
 
 
 
