@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Platform Squard Check-in2</title>
+    <title>Platform Squard Check-in3</title>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <style>
         body { font-family: sans-serif; text-align: center; padding: 20px; }
@@ -56,8 +56,8 @@
                     Math.cos(lat * Math.PI / 180) * Math.cos(workLat * Math.PI / 180) *
                     Math.sin(dLon/2) * Math.sin(dLon/2);
             var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-            // return R * c * 1000; // คืนค่าเป็นเมตร
-            if ((R * c * 1000) < 500) {
+            var distance = R * c * 1000 // คืนค่าเป็นเมตร
+            if (distance < 500) {
                 sendData(type, lat, lng);
             } else {
                 alert('อยู่นอกระยะที่กำหนด');
@@ -84,6 +84,7 @@
     </script>
 </body>
 </html>
+
 
 
 
