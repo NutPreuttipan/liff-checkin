@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Platform Squard Check-in System</title>
+    <title>Platform Squard Check-in1</title>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <style>
         body { font-family: sans-serif; text-align: center; padding: 20px; }
@@ -21,7 +21,7 @@
 
     <script>
         const LIFF_ID = '2008881601-Dg4CmxGP';
-        const GAS_URL = 'https://script.google.com/macros/s/AKfycbwwEbHJemB9QvQOvqbuy05pWjWXEZGoql-oXtWEaD0zppiYH0jJ9CuOLWc01SawrHX-FA/exec';
+        const GAS_URL = 'https://script.google.com/macros/s/AKfycbxDgAm0np0rW_odkI6n4HguPFUuPkKxcVVlycw6pafP4tTLtOyPG9fRHJbXQ23Te5nwbQ/exec';
 
         async function main() {
             await liff.init({ liffId: LIFF_ID });
@@ -58,17 +58,14 @@
                     lng: lng
                 })
             }).then(() => {
-                // if (response == 'Success') {
-                    alert('บันทึก ' + type + ' สำเร็จ!');
-                    liff.closeWindow();
-                // } else {
-                //     alert('บันทึกไม่สำเร็จ: ' + response)
-                // }
+                alert('บันทึก ' + type + ' สำเร็จ!');
+                liff.closeWindow();
             }).catch(err => alert('เกิดข้อผิดพลาด: ' + err));
         }
     </script>
 </body>
 </html>
+
 
 
 
