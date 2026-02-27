@@ -11,6 +11,8 @@
         button { padding: 15px 30px; margin: 10px; font-size: 18px; cursor: pointer; border-radius: 8px; border: none; color: white; }
         .btn-in { background-color: #28a745; }
         .btn-out { background-color: #dc3545; }
+        .btn-alert-confirm { background-color: #ffffff !important; color: #28a745 !important; }
+        .btn-alert-cancel { background-color: #ffffff !important; color: #000000 !important; }
         #loader { display: none; text-align: center; color: #28a745; margin-top: 10px; }
     </style>
 </head>
@@ -42,10 +44,13 @@
                 icon: 'question',
                 showCancelButton: true,
                 reverseButtons: true,
-                confirmButtonColor: '#28a745',
-                cancelButtonColor: '#000000',
+                buttonsStyling: false,
                 confirmButtonText: 'OK',
-                cancelButtonText: 'Cancel'
+                cancelButtonText: 'Cancel',
+                customClass: {
+                    confirmButton: 'btn-alert-confirm', 
+                    cancelButton: 'btn-alert-cancel'   
+                } 
             }).then((result) => {
                 if (result.isConfirmed) {
                     navigator.geolocation.getCurrentPosition((pos) => {
@@ -120,6 +125,7 @@
     </script>
 </body>
 </html>
+
 
 
 
