@@ -11,8 +11,9 @@
         button { padding: 15px 30px; margin: 10px; font-size: 18px; cursor: pointer; border-radius: 8px; border: none; color: white; }
         .btn-in { background-color: #28a745; }
         .btn-out { background-color: #dc3545; }
-        .btn-alert-confirm { background-color: #ffffff !important; color: #28a745 !important; }
-        .btn-alert-cancel { background-color: #ffffff !important; color: #000000 !important; }
+        .btn-alert-confirm { background-color: #ffffff !important; color: #28a745 !important; font-size: 16px !important; font-weight: bold !important;}
+        .btn-alert-cancel { background-color: #ffffff !important; color: #000000 !important; font-size: 16px !important; font-weight: bold !important;}
+        .title-alert { font-size: 22px !important; font-weight: bold !important; color: #000000 !important; }
         #loader { display: none; text-align: center; color: #28a745; margin-top: 10px; }
     </style>
 </head>
@@ -41,13 +42,13 @@
         function getLocation(type) {
             Swal.fire({
                 title: 'ยืนยันการ ' + type,
-                icon: 'question',
                 showCancelButton: true,
                 reverseButtons: true,
                 buttonsStyling: false,
                 confirmButtonText: 'OK',
                 cancelButtonText: 'Cancel',
                 customClass: {
+                    title: 'title-alert',
                     confirmButton: 'btn-alert-confirm', 
                     cancelButton: 'btn-alert-cancel'   
                 } 
@@ -62,15 +63,6 @@
                     });
                 }
             });
-            // if (confirm('ยืนยันการ ' + type)) {
-            //     navigator.geolocation.getCurrentPosition((pos) => {
-            //         const lat = pos.coords.latitude;
-            //         const lng = pos.coords.longitude;
-            //         calDistance(type, lat, lng);
-            //     }, (err) => {
-            //         alert('กรุณาอนุญาตการเข้าถึง GPS');
-            //     });
-            // }
         }
 
         function calDistance(type, lat, lng) {
@@ -125,6 +117,7 @@
     </script>
 </body>
 </html>
+
 
 
 
