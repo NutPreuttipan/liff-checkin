@@ -38,11 +38,13 @@
 
         function getLocation(type) {
             Swal.fire({
-                title: 'แจ้งเตือน', // นี่คือจุดที่คุณใส่ Title ได้
-                text: 'ยืนยันการ ' + type,
+                title: 'ยืนยันการ ' + type,
                 icon: 'question',
                 showCancelButton: true,
-                confirmButtonText: 'Confirm',
+                reverseButtons: true,
+                confirmButtonColor: '#28a745',
+                cancelButtonColor: '#000000',
+                confirmButtonText: 'OK',
                 cancelButtonText: 'Cancel'
             }).then((result) => {
                 if (result.isConfirmed) {
@@ -118,6 +120,7 @@
     </script>
 </body>
 </html>
+
 
 
 
