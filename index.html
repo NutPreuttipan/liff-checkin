@@ -11,9 +11,14 @@
         button { padding: 15px 30px; margin: 10px; font-size: 18px; cursor: pointer; border-radius: 8px; border: none; color: white; }
         .btn-in { background-color: #28a745; }
         .btn-out { background-color: #dc3545; }
-        .btn-alert-confirm { background-color: #ffffff !important; color: #28a745 !important; font-size: 16px !important; font-weight: bold !important;}
-        .btn-alert-cancel { background-color: #ffffff !important; color: #000000 !important; font-size: 16px !important; font-weight: bold !important;}
-        .title-alert { font-size: 22px !important; font-weight: bold !important; color: #000000 !important; }
+        .native-popup {width: 320px !important; padding: 20px !important; border-radius: 12px !important; font-family: sans-serif !important; }
+        .native-title { font-size: 18px !important; padding: 0 !important; margin-bottom: 10px !important; font-weight: 600 !important;}
+        .native-text { font-size: 14px !important; margin: 0 0 20px 0 !important; color: #444 !important; }
+        .native-actions { display: flex !important; justify-content: flex-end !important; gap: 15px !important; width: 100% !important; margin-top: 10px !important; }
+        .native-confirm-btn, .native-cancel-btn { background: transparent !important; border: none !important; font-size: 16px !important; font-weight: 500 !important; cursor: pointer; padding: 5px 10px !important; }
+        .native-confirm-btn { color: #28a745 !important; }
+        .native-cancel-btn { color: #666 !important; }
+        .native-confirm-btn:active, .native-cancel-btn:active { opacity: 0.5; }
         #loader { display: none; text-align: center; color: #28a745; margin-top: 10px; }
     </style>
 </head>
@@ -48,10 +53,13 @@
                 confirmButtonText: 'OK',
                 cancelButtonText: 'Cancel',
                 customClass: {
-                    title: 'title-alert',
-                    confirmButton: 'btn-alert-confirm', 
-                    cancelButton: 'btn-alert-cancel'   
-                } 
+                    popup: 'native-popup',
+                    title: 'native-title',
+                    htmlContainer: 'native-text',
+                    actions: 'native-actions',
+                    confirmButton: 'native-confirm-btn',
+                    cancelButton: 'native-cancel-btn'
+                }
             }).then((result) => {
                 if (result.isConfirmed) {
                     navigator.geolocation.getCurrentPosition((pos) => {
@@ -117,6 +125,7 @@
     </script>
 </body>
 </html>
+
 
 
 
