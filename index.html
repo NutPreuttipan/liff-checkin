@@ -33,6 +33,36 @@
         const LIFF_ID = '2009213281-8WdrgWWB';
         const GAS_URL = 'https://script.google.com/macros/s/AKfycbxOVlVSGaUICT3ocuOJ30kW5oyphBujhOTs9R6kOyk6rPzv4LlQAB-RA-GNekwpFnNA/exec';
 
+        const NativeConfirm = Swal.mixin({
+            reverseButtons: true,
+            buttonsStyling: false,
+            showCancelButton: true,
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancel',
+            customClass: {
+                popup: 'native-popup',
+                title: 'native-title',
+                htmlContainer: 'native-text',
+                actions: 'native-actions',
+                confirmButton: 'native-confirm-btn',
+                cancelButton: 'native-cancel-btn'
+            }
+        });
+        
+        const NativeAlert = Swal.mixin({
+            reverseButtons: true,
+            buttonsStyling: false,
+            confirmButtonText: 'OK',
+            customClass: {
+                popup: 'native-popup',
+                title: 'native-title',
+                htmlContainer: 'native-text',
+                actions: 'native-actions',
+                confirmButton: 'native-confirm-btn',
+                cancelButton: 'native-cancel-btn'
+            }
+        });
+        
         async function main() {
             await liff.init({ liffId: LIFF_ID });
             if (liff.isLoggedIn()) {
@@ -115,39 +145,10 @@
             script.src = fullUrl;
             document.body.appendChild(script);
         }
-
-        const NativeConfirm = Swal.mixin({
-            reverseButtons: true,
-            buttonsStyling: false,
-            showCancelButton: true,
-            confirmButtonText: 'OK',
-            cancelButtonText: 'Cancel',
-            customClass: {
-                popup: 'native-popup',
-                title: 'native-title',
-                htmlContainer: 'native-text',
-                actions: 'native-actions',
-                confirmButton: 'native-confirm-btn',
-                cancelButton: 'native-cancel-btn'
-            }
-        });
-        
-        const NativeAlert = Swal.mixin({
-            reverseButtons: true,
-            buttonsStyling: false,
-            confirmButtonText: 'OK',
-            customClass: {
-                popup: 'native-popup',
-                title: 'native-title',
-                htmlContainer: 'native-text',
-                actions: 'native-actions',
-                confirmButton: 'native-confirm-btn',
-                cancelButton: 'native-cancel-btn'
-            }
-        }); 
     </script>
 </body>
 </html>
+
 
 
 
