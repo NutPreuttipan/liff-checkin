@@ -45,21 +45,8 @@
         main();
 
         function getLocation(type) {
-            Swal.fire({
-                title: 'ยืนยันการ ' + type,
-                showCancelButton: true,
-                reverseButtons: true,
-                buttonsStyling: false,
-                confirmButtonText: 'OK',
-                cancelButtonText: 'Cancel',
-                customClass: {
-                    popup: 'native-popup',
-                    title: 'native-title',
-                    htmlContainer: 'native-text',
-                    actions: 'native-actions',
-                    confirmButton: 'native-confirm-btn',
-                    cancelButton: 'native-cancel-btn'
-                }
+            NativeConfirm.fire({
+                title: 'ยืนยันการ ' + type
             }).then((result) => {
                 if (result.isConfirmed) {
                     navigator.geolocation.getCurrentPosition((pos) => {
@@ -67,7 +54,7 @@
                         const lng = pos.coords.longitude;
                         calDistance(type, lat, lng);
                     }, (err) => {
-                        alert('กรุณาอนุญาตการเข้าถึง GPS');
+                        NativeAlert.fire({ title: 'กรุณาอนุญาตการเข้าถึง GPS' });
                     });
                 }
             });
@@ -84,10 +71,10 @@
                     Math.sin(dLon/2) * Math.sin(dLon/2);
             var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
             var distance = R * c * 1000 // ค่าเป็นเมตร
-            if (distance < 50000) {
+            if (distance < 1000) {
                 sendData(type, lat, lng);
             } else {
-                alert('อยู่นอกระยะที่กำหนด');
+                NativeAlert.fire({ title: 'อยู่นอกระยะที่กำหนดไม่สามาร ' + type + ' ได้' });
                 liff.closeWindow();
             }
         }
@@ -104,10 +91,10 @@
                 document.getElementById('loader').style.display = 'none';
                 
                 if (data.status === 'success') {
-                    alert(data.message);
+                    NativeAlert.fire({ title: data.message });
                     liff.closeWindow();
                 } else {
-                    alert('แจ้งเตือน: ' + data.message);
+                    NativeAlert.fire({ title: 'แจ้งเตือน: ' + data.message });
                 }
             };
     
@@ -122,9 +109,40 @@
             script.src = fullUrl;
             document.body.appendChild(script);
         }
+
+        const NativeConfirm = Swal.mixin({
+            reverseButtons: true,
+            buttonsStyling: false,
+            showCancelButton: true,
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancel',
+            customClass: {
+                popup: 'native-popup',
+                title: 'native-title',
+                htmlContainer: 'native-text',
+                actions: 'native-actions',
+                confirmButton: 'native-confirm-btn',
+                cancelButton: 'native-cancel-btn'
+            }
+        });
+        
+        const NativeAlert = Swal.mixin({
+            reverseButtons: true,
+            buttonsStyling: false,
+            confirmButtonText: 'OK',
+            customClass: {
+                popup: 'native-popup',
+                title: 'native-title',
+                htmlContainer: 'native-text',
+                actions: 'native-actions',
+                confirmButton: 'native-confirm-btn',
+                cancelButton: 'native-cancel-btn'
+            }
+        }); 
     </script>
 </body>
 </html>
+
 
 
 
