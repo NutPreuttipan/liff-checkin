@@ -105,7 +105,7 @@
                 sendData(type, lat, lng);
             } else {
                 NativeAlert.fire({ 
-                    title: 'อยู่นอกระยะที่กำหนดไม่สามาร ' + type + ' ได้' 
+                    title: 'อยู่นอกระยะที่กำหนดไม่สามารถ ' + type + ' ได้' 
                 }).then(() => {
                     liff.closeWindow();
                 });
@@ -148,6 +148,7 @@
     </script>
 </body>
 </html>
+
 
 
 
