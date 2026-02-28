@@ -74,8 +74,11 @@
             if (distance < 1000) {
                 sendData(type, lat, lng);
             } else {
-                NativeAlert.fire({ title: 'อยู่นอกระยะที่กำหนดไม่สามาร ' + type + ' ได้' });
-                liff.closeWindow();
+                NativeAlert.fire({ 
+                    title: 'อยู่นอกระยะที่กำหนดไม่สามาร ' + type + ' ได้' 
+                }).then(() => {
+                    liff.closeWindow();
+                });
             }
         }
 
@@ -91,8 +94,11 @@
                 document.getElementById('loader').style.display = 'none';
                 
                 if (data.status === 'success') {
-                    NativeAlert.fire({ title: data.message });
-                    liff.closeWindow();
+                    NativeAlert.fire({ 
+                        title: data.message 
+                    }).then(() => {
+                        liff.closeWindow();
+                    });
                 } else {
                     NativeAlert.fire({ title: 'แจ้งเตือน: ' + data.message });
                 }
@@ -142,6 +148,7 @@
     </script>
 </body>
 </html>
+
 
 
 
